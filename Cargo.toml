@@ -5,5 +5,13 @@ edition = "2021"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
+[[bin]]
+name ="todo-yew-rs"
+path = "src/main.rs"
+
+[lib]
+name ="todo_library"
+path = "src/lib.rs"
+
 [dependencies]
 yew = "0.19"

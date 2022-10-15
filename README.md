@@ -14,4 +14,4 @@ trunk serve
 
 Trunk will compile the project and host the project live on port 8080.
 
-Trunk compiles to HTML, CSS, JavaScript and WebAssembly.
+Trunk compiles to HTML, CSS, JavaScript and WebAssembly (WASM).
