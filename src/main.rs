@@ -1,5 +1,5 @@
-use todo_library::*;
+use todo_library::HelloWorldApp;
 
 fn main() {
-    yew::start_app::<CounterComponent>();
+    yew::start_app::<HelloWorldApp>();
 }
