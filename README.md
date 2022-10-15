@@ -1,8 +1,6 @@
-# Todo WebApp written in Rust using Yew.rs, with trunk as the backend
+# Todo WebApp written in Rust using Yew.rs, with Trunk as the backend
 
-This will compile to HTML, CSS, JavaScript and WebAssembly.
-
-For a simple back end I am using the trunk rust crate, found at <https://crates.io/crates/trunk>.
+For a simple backend I am using the trunk rust crate, found at <https://crates.io/crates/trunk>.
 
 ```
 cargo install trunk
@@ -15,3 +13,5 @@ trunk serve
 ```
 
 Trunk will compile the project and host the project live on port 8080.
+
+Trunk compiles to HTML, CSS, JavaScript and WebAssembly.
