@@ -1,62 +1,48 @@
-use gloo::console::log;
-use serde::{Deserialize, Serialize};
 use yew::prelude::*;
 
-pub enum Msg {
-    AddOne,
-}
+mod components;
 
-pub struct CounterComponent {
-    count: i64,
-}
+use components::atoms::add_new::AddNew;
+use components::atoms::main_title::MainTitle;
+use components::atoms::task::Task;
 
-impl Component for CounterComponent {
-    type Message = Msg;
-    type Properties = ();
-
-    fn create(_ctx: &Context<Self>) -> Self {
-        Self { count: 0 }
-    }
-
-    fn update(&mut self, _ctx: &Context<Self>, msg: Self::Message) -> bool {
-        match msg {
-            Msg::AddOne => {
-                self.count += 1;
-                true
-            }
-        }
-    }
-
-    fn view(&self, ctx: &Context<Self>) -> Html {
-        let link = ctx.link();
-        html! {
-            <div class="container">
-                <p>{ self.count }</p>
-                <button onclick={link.callback(|_| Msg::AddOne)}>{ "+1" }</button>
-            </div>
-        }
-    }
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-struct MyObject {
-    user: String,
-    fav: String,
-}
-
-#[function_component(HelloWorldApp)]
-pub fn hello_world_app() -> Html {
-    let name = "Adam";
-    let myo = MyObject {
-        user: "Adam".into(),
-        fav: "Rust".into(),
-    };
-    log!(name);
-    log!(serde_json::to_string_pretty(&myo).unwrap());
+#[function_component(ToDoApp)]
+pub fn to_do_app() -> Html {
     html! {
-        <>
-        <h1>{"Hello world!"}</h1>
-        <p>{"Hello "}{name}{"!"}</p>
-        </>
+        <div>
+        <MainTitle title="ToDo App in Yew.rs!"/>
+
+        <AddNew/>
+        {render_to_do_list(get_tasks())}
+
+        </div>
     }
+}
+
+fn render_to_do_list(tasks: Vec<&str>) -> Html {
+    html! {
+            <ul style="list-style-type: none">
+            {list_to_html(tasks)}
+            </ul>
+    }
+}
+
+fn list_to_html(list: Vec<&str>) -> Html {
+    list.iter()
+        .enumerate()
+        .map(|(idx, item)| html! {<Task id={idx} text={item.to_string()}/>})
+        .collect()
+}
+
+fn get_tasks<'a>() -> Vec<&'a str> {
+    vec![
+        "Make breakfast",
+        "Feed the dog",
+        "Do laundry",
+        "Go on a run",
+        "Clean the house",
+        "Go to the grocery store",
+        "Do some coding",
+        "Read a book",
+    ]
 }

@@ -1,5 +1,5 @@
-use todo_library::HelloWorldApp;
+use todo_library::ToDoApp;
 
 fn main() {
-    yew::start_app::<HelloWorldApp>();
+    yew::start_app::<ToDoApp>();
 }
