@@ -10,7 +10,7 @@ use components::atoms::task::Task;
 pub fn to_do_app() -> Html {
     html! {
         <div>
-        <MainTitle title="ToDo App in Yew.rs!"/>
+        <MainTitle title="Todo App in Yew.rs!"/>
 
         <AddNew/>
         {render_to_do_list(get_tasks())}
